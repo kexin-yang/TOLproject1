@@ -22,7 +22,7 @@ nav {
 	background-color: #1e88e5 !important;
 }
 
-#quiz1 {
+.slide {
 	z-index: 10;
 	position: absolute;
 	left: 300px;
@@ -30,11 +30,14 @@ nav {
 	width: 640px;
 	height: 390px;
 	/*background-color: #1e88e5;*/
-	background-image: url('../image/quiz1.png');
 	background-repeat:no-repeat; 
 	background-size:100% 100%;
 	-moz-background-size:100% 100%;
 	visibility: hidden;
+}
+
+#quiz1 {
+	background-image: url('../image/quiz1.png');
 }
 
 #a1 {
@@ -72,7 +75,7 @@ nav {
 
 }
 
-.move {
+#move {
 	position: absolute;
 	left: 240px;
 	top: 100px;
@@ -80,16 +83,21 @@ nav {
 }
 
 #slide2 {
-	z-index: 10;
-	position: absolute;
-	left: 300px;
-	top: 150px;
-	width: 640px;
-	height: 390px;
-	/*background-color: #1e88e5;*/
 	background-image: url('../image/slide2.png');
-	background-repeat:no-repeat; 
-	background-size:100% 100%;
-	-moz-background-size:100% 100%;
-	visibility: hidden;
+}
+
+#quiz2 {
+	background-image: url('../image/quiz2.png');
+}
+
+#a2 {
+	position: absolute;
+	left: 175px;
+	top: 320px;
+}
+
+#b2 {
+	position: absolute;
+	left: 440px;
+	top: 320px;
 }

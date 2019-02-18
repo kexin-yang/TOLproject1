@@ -28,14 +28,22 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/IfsKR97Fc3Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div> -->
       <div id="player"></div>
-      <div id="quiz1">
+
+      <div id="quiz1" class="slide">
         <div id="a1" class="option">A. UVA</div>
         <div id="b1" class="option">B. UVB</div>
         <div id="c1" class="option">C. UVC</div>
       </div>
-      <div id="slide2">
-        <div class="option move" onclick="seek(162)">I am good to move on!</div>
+
+      <div id="slide2" class="slide">
+        <div id="move" class="option">I am good to move on!</div>
       </div>
+
+      <div id="quiz2" class="slide">
+        <div id="a2" class="option">A</div>
+        <div id="b2" class="option">B</div>
+      </div>
+
     </div> 
 
     <script>
@@ -43,6 +51,7 @@
       var tag = document.createElement('script');
       var c1 = false, c2 = false, c3 = false, c4 = false, c5 = false;
       var w1 = false, w2 = false, w3 = false, w4 = false, w5 = false;
+      var numq = 0;
 
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -77,6 +86,7 @@
         var quiz, stopPlayTimer;
         var time, stopPlayAt, rate, remainingTime;
         var time2, stopPlayAt2, rate2, remainingTime2;
+        var time3, stopPlayAt3, rate3, remainingTime3;
         clearTimeout(stopPlayTimer);
 
         if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -97,6 +107,25 @@
               stopPlayTimer = setTimeout(pauseVideo2, remainingTime2 * 1000);
             }
           }
+
+          stopPlayAt3 = 226;
+          time3 = player.getCurrentTime();
+          if (time3 + .4 < stopPlayAt3) {
+            rate3 = player.getPlaybackRate();
+            remainingTime3 = (stopPlayAt3 - time3) / rate3;
+            stopPlayTimer = setTimeout(pauseVideo3, remainingTime3 * 1000);
+          }
+
+          stopPlayAt4 = 236;
+          time4 = player.getCurrentTime();
+          if (time4 + .4 < stopPlayAt4) {
+            rate4 = player.getPlaybackRate();
+            remainingTime4 = (stopPlayAt4 - time4) / rate4;
+            if (c2) {
+              stopPlayTimer = setTimeout(pauseVideo2, remainingTime4 * 1000);
+            }
+          }
+
         }
       };
 
@@ -112,6 +141,12 @@
         quiz.style.visibility = 'visible';
       };
 
+      function pauseVideo3() {
+        quiz = document.getElementById('quiz2');
+        player.pauseVideo();  
+        quiz.style.visibility = 'visible';
+      };
+
       function seek(num)
       {
         player.seekTo(num);
@@ -122,19 +157,45 @@
       document.getElementById("a1").onclick = function(){
         c1 = true;
         w1 = false;
+        numq = 1;
         seek(133);
       };
 
       document.getElementById("b1").onclick = function(){
         w1 = true;
         c1 = false;
+        numq = 1;
         seek(143);
       };
 
-      document.getElementById("b1").onclick = function(){
+      document.getElementById("c1").onclick = function(){
         w1 = true;
         c1 = false;
+        numq = 1;
         seek(143);
+      };
+
+      document.getElementById("b2").onclick = function(){
+        c2 = true;
+        w2 = false;
+        numq = 2;
+        seek(228);
+      };
+
+      document.getElementById("a2").onclick = function(){
+        w2 = true;
+        c2 = false;
+        numq = 2;
+        seek(238);
+      };
+
+      document.getElementById("move").onclick = function(){
+        if (c1 && numq == 1) {
+          seek(162);
+        }
+        if (c2 && numq == 2) {
+          seek(258);
+        }
       };
 
     </script>

@@ -75,6 +75,13 @@ nav {
 
 }
 
+#detail {
+	position: absolute;
+	left: 195px;
+	top: 70px;
+	text-align: center;
+}
+
 #move {
 	position: absolute;
 	left: 240px;

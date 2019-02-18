@@ -37,6 +37,7 @@
 
       <div id="slide1" class="slide">
         <div id="move" class="option">I am good to move on!</div>
+        <div id="detail" class="option">I want more details about this question</div>
       </div>
 
       <div id="quiz2" class="slide">
@@ -361,10 +362,27 @@
           seek(485);
         }
         if (c5 && numq == 5) {
-          console.log("over");
           player.stopVideo();
           quiz = document.getElementById('slide2');
           quiz.style.visibility = 'visible';
+        }
+      }
+
+      document.getElementById("detail").onclick = function(){
+        if (c1 && numq == 1) {
+          seek(148);
+        }
+        if (c2 && numq == 2) {
+          seek(242);
+        }
+        if (c3 && numq == 3) {
+          seek(321);
+        }
+        if (c4 && numq == 4) {
+          seek(453);
+        }
+        if (c5 && numq == 5) {
+          seek(509);
         }
       }
 

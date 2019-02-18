@@ -1,12 +1,16 @@
-.video-container {
-	margin-top: 50px;
+#player {
+	/*margin-top: 50px;*/
+	/*z-index: -10 !important;*/
+	position: absolute;
+	left: 300px;
+	top: 150px;
 }
 
 .brand-logo {
 	margin-left: 30px;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 500;
-	color: #ffca28 !important;
+	color: #ffd54f !important;
 }
 
 #nav-mobile li {
@@ -16,4 +20,19 @@
 
 nav {
 	background-color: #1e88e5 !important;
+}
+
+#quiz1 {
+	z-index: 10;
+	position: absolute;
+	left: 300px;
+	top: 150px;
+	width: 640px;
+	height: 390px;
+	/*background-color: #1e88e5;*/
+	background-image: url('../image/quiz1.png');
+	background-repeat:no-repeat; 
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
+	visibility: hidden;
 }

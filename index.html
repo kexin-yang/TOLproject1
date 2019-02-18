@@ -50,6 +50,20 @@
         <div id="c3" class="option">C</div>
       </div>
 
+      <div id="quiz4" class="slide">
+        <div id="a4" class="option">A</div>
+        <div id="b4" class="option">B</div>
+      </div>
+
+      <div id="quiz5" class="slide">
+        <div id="a5" class="option">A</div>
+        <div id="b5" class="option">B</div>
+      </div>
+
+      <div id="slide2" class="slide">
+        <div id="end">Congratulations! You have finished all the steps.</div>
+      </div>
+
     </div> 
 
     <script>
@@ -96,6 +110,10 @@
         var time4, stopPlayAt4, rate4, remainingTime4;
         var time5, stopPlayAt5, rate5, remainingTime5;
         var time6, stopPlayAt6, rate6, remainingTime6;
+        var time7, stopPlayAt7, rate7, remainingTime7;
+        var time8, stopPlayAt8, rate8, remainingTime8;
+        var time9, stopPlayAt9, rate9, remainingTime9;
+        var time10, stopPlayAt10, rate10, remainingTime10;
         clearTimeout(stopPlayTimer);
 
         if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -145,9 +163,9 @@
             rate5 = player.getPlaybackRate();
             remainingTime5 = (stopPlayAt5 - time5) / rate5;
             // if (numq == 2) {
-            //   stopPlayTimer = setTimeout(pauseVideo5, remainingTime5 * 1000);
+            //   stopPlayTimer = setTimeout(pauseVideo4, remainingTime5 * 1000);
             // }
-            stopPlayTimer = setTimeout(pauseVideo5, remainingTime5 * 1000);
+            stopPlayTimer = setTimeout(pauseVideo4, remainingTime5 * 1000);
           }
 
           stopPlayAt6 = 315;
@@ -157,6 +175,42 @@
             remainingTime6 = (stopPlayAt6 - time6) / rate6;
             if (c3) {
               stopPlayTimer = setTimeout(pauseVideo2, remainingTime6 * 1000);
+            }
+          }
+
+          stopPlayAt7 = 425;
+          time7 = player.getCurrentTime();
+          if (time7 + .4 < stopPlayAt7) {
+            rate7 = player.getPlaybackRate();
+            remainingTime7 = (stopPlayAt7 - time7) / rate7;
+            stopPlayTimer = setTimeout(pauseVideo5, remainingTime7 * 1000);
+          }
+
+          stopPlayAt8 = 444;
+          time8 = player.getCurrentTime();
+          if (time8 + .4 < stopPlayAt8) {
+            rate8 = player.getPlaybackRate();
+            remainingTime8 = (stopPlayAt8 - time8) / rate8;
+            if (c4) {
+              stopPlayTimer = setTimeout(pauseVideo2, remainingTime8 * 1000);
+            }
+          }
+
+          stopPlayAt9 = 492;
+          time9 = player.getCurrentTime();
+          if (time9 + .4 < stopPlayAt9) {
+            rate9 = player.getPlaybackRate();
+            remainingTime9 = (stopPlayAt9 - time9) / rate9;
+            stopPlayTimer = setTimeout(pauseVideo6, remainingTime9 * 1000);
+          }
+
+          stopPlayAt10 = 504;
+          time10 = player.getCurrentTime();
+          if (time10 + .4 < stopPlayAt10) {
+            rate10 = player.getPlaybackRate();
+            remainingTime10 = (stopPlayAt10 - time10) / rate10;
+            if (c5) {
+              stopPlayTimer = setTimeout(pauseVideo2, remainingTime10 * 1000);
             }
           }
 
@@ -181,8 +235,20 @@
         quiz.style.visibility = 'visible';
       }
 
-      function pauseVideo5() {
+      function pauseVideo4() {
         quiz = document.getElementById('quiz3');
+        player.pauseVideo();  
+        quiz.style.visibility = 'visible';
+      }
+
+      function pauseVideo5() {
+        quiz = document.getElementById('quiz4');
+        player.pauseVideo();  
+        quiz.style.visibility = 'visible';
+      }
+
+      function pauseVideo6() {
+        quiz = document.getElementById('quiz5');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
       }
@@ -251,6 +317,36 @@
         seek(316);
       }
 
+      document.getElementById("a4").onclick = function(){
+        w4 = true;
+        c4 = false;
+        numq = 4;
+        seek(445);
+      }
+
+      document.getElementById("b4").onclick = function(){
+        c4 = true;
+        w4 = false;
+        numq = 4;
+        player.playVideo();
+        quiz.style.visibility = 'hidden';
+      }
+
+      document.getElementById("b5").onclick = function(){
+        w5 = true;
+        c5 = false;
+        numq = 5;
+        seek(505);
+      }
+
+      document.getElementById("a5").onclick = function(){
+        c5 = true;
+        w5 = false;
+        numq = 5;
+        quiz.style.visibility = 'hidden';
+        player.playVideo();
+      }
+
       document.getElementById("move").onclick = function(){
         if (c1 && numq == 1) {
           seek(162);
@@ -260,6 +356,15 @@
         }
         if (c3 && numq == 3) {
           seek(362);
+        }
+        if (c4 && numq == 4) {
+          seek(485);
+        }
+        if (c5 && numq == 5) {
+          console.log("over");
+          player.stopVideo();
+          quiz = document.getElementById('slide2');
+          quiz.style.visibility = 'visible';
         }
       }
 

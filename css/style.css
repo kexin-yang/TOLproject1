@@ -82,7 +82,23 @@ nav {
 	text-align: center;
 }
 
+#end {
+	position: absolute;
+	left: 145px;
+	top: 100px;
+	text-align: center;
+	color: #fff;
+	background-color: #1e88e5;
+	border-radius: 14px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 #slide1 {
+	background-image: url('../image/slide1.png');
+}
+
+#slide2 {
 	background-image: url('../image/slide1.png');
 }
 
@@ -108,19 +124,51 @@ nav {
 
 #a3 {
 	position: absolute;
-	left: 177px;
-	top: 243px;
+	left: 155px;
+	top: 285px;
 }
 
 #b3 {
 	position: absolute;
-	left: 295px;
-	top: 243px;
+	left: 290px;
+	top: 285px;
 }
 
 #c3 {
 	position: absolute;
-	left: 410px;
-	top: 243px;
+	left: 475px;
+	top: 285px;
 
+}
+
+#quiz4 {
+	background-image: url('../image/quiz4.png');
+}
+
+#a4 {
+	position: absolute;
+	left: 220px;
+	top: 312px;
+}
+
+#b4 {
+	position: absolute;
+	left: 355px;
+	top: 312px;
+}
+
+#quiz5 {
+	background-image: url('../image/quiz5.png');
+}
+
+#a5 {
+	position: absolute;
+	left: 220px;
+	top: 312px;
+}
+
+#b5 {
+	position: absolute;
+	left: 355px;
+	top: 312px;
 }

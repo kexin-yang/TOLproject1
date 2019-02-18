@@ -36,3 +36,60 @@ nav {
 	-moz-background-size:100% 100%;
 	visibility: hidden;
 }
+
+#a1 {
+	position: absolute;
+	left: 177px;
+	top: 243px;
+}
+
+#b1 {
+	position: absolute;
+	left: 295px;
+	top: 243px;
+}
+
+#c1 {
+	position: absolute;
+	left: 410px;
+	top: 243px;
+
+}
+
+.option {
+	color: #fff;
+	background-color: #1e88e5;
+	border-radius: 14px;
+	padding-left: 5px;
+	padding-right: 5px;
+	cursor: pointer;
+}
+
+.option:hover {
+	background-color: #ffd54f;
+	padding-right: 7px;
+	padding-left: 7px;
+
+}
+
+.move {
+	position: absolute;
+	left: 240px;
+	top: 100px;
+	text-align: center;
+}
+
+#slide2 {
+	z-index: 10;
+	position: absolute;
+	left: 300px;
+	top: 150px;
+	width: 640px;
+	height: 390px;
+	/*background-color: #1e88e5;*/
+	background-image: url('../image/slide2.png');
+	background-repeat:no-repeat; 
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
+	visibility: hidden;
+}

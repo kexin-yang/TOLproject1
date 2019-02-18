@@ -28,7 +28,14 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/IfsKR97Fc3Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div> -->
       <div id="player"></div>
-      <div id="quiz1"></div>
+      <div id="quiz1">
+        <div id="a1" class="option" onclick="seek(133)">A. UVA</div>
+        <div id="b1" class="option" onclick="seek(142)">B. UVB</div>
+        <div id="c1" class="option" onclick="seek(142)">C. UVC</div>
+      </div>
+      <div id="slide2">
+        <div class="option move" onclick="seek(162)">I am good to move on!</div>
+      </div>
     </div> 
 
     <script>
@@ -65,7 +72,9 @@
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        var time, stopPlayAt, rate, remainingTime, stopPlayTimer, quiz;
+        var quiz, stopPlayTimer;
+        var time, stopPlayAt, rate, remainingTime;
+        var time2, stopPlayAt2, rate2, remainingTime2;
         clearTimeout(stopPlayTimer);
 
         if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -74,17 +83,38 @@
           if (time + .4 < stopPlayAt) {
             rate = player.getPlaybackRate();
             remainingTime = (stopPlayAt - time) / rate;
-            stopPlayTimer = setTimeout(pauseVideo, remainingTime * 1000);
+            stopPlayTimer = setTimeout(pauseVideo1, remainingTime * 1000);
+          }
 
+          stopPlayAt2 = 142;
+          time2 = player.getCurrentTime();
+          if (time2 + .4 < stopPlayAt2) {
+            rate2 = player.getPlaybackRate();
+            remainingTime2 = (stopPlayAt2 - time) / rate2;
+            stopPlayTimer = setTimeout(pauseVideo2, remainingTime2 * 1000);
           }
         }
       }
 
-      function pauseVideo() {
-        player.pauseVideo();
+      function pauseVideo1() {
         quiz = document.getElementById('quiz1');
+        player.pauseVideo();  
         quiz.style.visibility = 'visible';
       }
+
+      function pauseVideo2() {
+        quiz = document.getElementById('slide2');
+        player.pauseVideo();  
+        quiz.style.visibility = 'visible';
+      }
+
+      function seek(num)
+      {
+        player.seekTo(num);
+        quiz.style.visibility = 'hidden';
+        player.playVideo();
+      }
+
     </script>
 
     <!--JavaScript at end of body for optimized loading-->

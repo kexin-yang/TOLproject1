@@ -77,12 +77,12 @@
             'onStateChange': onPlayerStateChange
           }
         });
-      };
+      }
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         event.target.playVideo();
-      };
+      }
 
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
@@ -93,6 +93,9 @@
         var time, stopPlayAt, rate, remainingTime;
         var time2, stopPlayAt2, rate2, remainingTime2;
         var time3, stopPlayAt3, rate3, remainingTime3;
+        var time4, stopPlayAt4, rate4, remainingTime4;
+        var time5, stopPlayAt5, rate5, remainingTime5;
+        var time6, stopPlayAt6, rate6, remainingTime6;
         clearTimeout(stopPlayTimer);
 
         if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -141,79 +144,90 @@
           if (time5 + .4 < stopPlayAt5) {
             rate5 = player.getPlaybackRate();
             remainingTime5 = (stopPlayAt5 - time5) / rate5;
-            if (numq = 2) {
-              stopPlayTimer = setTimeout(pauseVideo5, remainingTime5 * 1000);
+            // if (numq == 2) {
+            //   stopPlayTimer = setTimeout(pauseVideo5, remainingTime5 * 1000);
+            // }
+            stopPlayTimer = setTimeout(pauseVideo5, remainingTime5 * 1000);
+          }
+
+          stopPlayAt6 = 315;
+          time6 = player.getCurrentTime();
+          if (time6 + .4 < stopPlayAt6) {
+            rate6 = player.getPlaybackRate();
+            remainingTime6 = (stopPlayAt6 - time6) / rate6;
+            if (c3) {
+              stopPlayTimer = setTimeout(pauseVideo2, remainingTime6 * 1000);
             }
           }
 
         }
-      };
+      }
 
       function pauseVideo1() {
         quiz = document.getElementById('quiz1');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
-      };
+      }
 
       function pauseVideo2() {
         quiz = document.getElementById('slide1');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
-      };
+      }
 
       function pauseVideo3() {
         quiz = document.getElementById('quiz2');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
-      };
+      }
 
       function pauseVideo5() {
         quiz = document.getElementById('quiz3');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
-      };
+      }
 
       function seek(num)
       {
         player.seekTo(num);
         quiz.style.visibility = 'hidden';
         player.playVideo();
-      };
+      }
 
       document.getElementById("a1").onclick = function(){
         c1 = true;
         w1 = false;
         numq = 1;
         seek(133);
-      };
+      }
 
       document.getElementById("b1").onclick = function(){
         w1 = true;
         c1 = false;
         numq = 1;
         seek(143);
-      };
+      }
 
       document.getElementById("c1").onclick = function(){
         w1 = true;
         c1 = false;
         numq = 1;
         seek(143);
-      };
+      }
 
       document.getElementById("b2").onclick = function(){
         c2 = true;
         w2 = false;
         numq = 2;
         seek(228);
-      };
+      }
 
       document.getElementById("a2").onclick = function(){
         w2 = true;
         c2 = false;
         numq = 2;
         seek(238);
-      };
+      }
 
       document.getElementById("a3").onclick = function(){
         c3 = true;
@@ -221,21 +235,21 @@
         numq = 3;
         player.playVideo();
         quiz.style.visibility = 'hidden';
-      };
+      }
 
       document.getElementById("b3").onclick = function(){
         w3 = true;
         c3 = false;
         numq = 3;
         seek(316);
-      };
+      }
 
       document.getElementById("c3").onclick = function(){
         w3 = true;
         c3 = false;
         numq = 3;
         seek(316);
-      };
+      }
 
       document.getElementById("move").onclick = function(){
         if (c1 && numq == 1) {
@@ -244,7 +258,10 @@
         if (c2 && numq == 2) {
           seek(258);
         }
-      };
+        if (c3 && numq == 3) {
+          seek(362);
+        }
+      }
 
     </script>
 

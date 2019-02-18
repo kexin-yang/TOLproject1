@@ -82,8 +82,8 @@ nav {
 	text-align: center;
 }
 
-#slide2 {
-	background-image: url('../image/slide2.png');
+#slide1 {
+	background-image: url('../image/slide1.png');
 }
 
 #quiz2 {
@@ -100,4 +100,27 @@ nav {
 	position: absolute;
 	left: 440px;
 	top: 320px;
+}
+
+#quiz3 {
+	background-image: url('../image/quiz3.png');
+}
+
+#a3 {
+	position: absolute;
+	left: 177px;
+	top: 243px;
+}
+
+#b3 {
+	position: absolute;
+	left: 295px;
+	top: 243px;
+}
+
+#c3 {
+	position: absolute;
+	left: 410px;
+	top: 243px;
+
 }

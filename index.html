@@ -35,13 +35,19 @@
         <div id="c1" class="option">C. UVC</div>
       </div>
 
-      <div id="slide2" class="slide">
+      <div id="slide1" class="slide">
         <div id="move" class="option">I am good to move on!</div>
       </div>
 
       <div id="quiz2" class="slide">
         <div id="a2" class="option">A</div>
         <div id="b2" class="option">B</div>
+      </div>
+
+      <div id="quiz3" class="slide">
+        <div id="a3" class="option">A</div>
+        <div id="b3" class="option">B</div>
+        <div id="c3" class="option">C</div>
       </div>
 
     </div> 
@@ -95,7 +101,9 @@
           if (time + .4 < stopPlayAt) {
             rate = player.getPlaybackRate();
             remainingTime = (stopPlayAt - time) / rate;
-            stopPlayTimer = setTimeout(pauseVideo1, remainingTime * 1000);
+            if (numq == 0) {
+              stopPlayTimer = setTimeout(pauseVideo1, remainingTime * 1000);
+            }
           }
 
           stopPlayAt2 = 142;
@@ -113,7 +121,9 @@
           if (time3 + .4 < stopPlayAt3) {
             rate3 = player.getPlaybackRate();
             remainingTime3 = (stopPlayAt3 - time3) / rate3;
-            stopPlayTimer = setTimeout(pauseVideo3, remainingTime3 * 1000);
+            if (numq == 1) {
+              stopPlayTimer = setTimeout(pauseVideo3, remainingTime3 * 1000);
+            }
           }
 
           stopPlayAt4 = 236;
@@ -123,6 +133,16 @@
             remainingTime4 = (stopPlayAt4 - time4) / rate4;
             if (c2) {
               stopPlayTimer = setTimeout(pauseVideo2, remainingTime4 * 1000);
+            }
+          }
+
+          stopPlayAt5 = 289;
+          time5 = player.getCurrentTime();
+          if (time5 + .4 < stopPlayAt5) {
+            rate5 = player.getPlaybackRate();
+            remainingTime5 = (stopPlayAt5 - time5) / rate5;
+            if (numq = 2) {
+              stopPlayTimer = setTimeout(pauseVideo5, remainingTime5 * 1000);
             }
           }
 
@@ -136,13 +156,19 @@
       };
 
       function pauseVideo2() {
-        quiz = document.getElementById('slide2');
+        quiz = document.getElementById('slide1');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
       };
 
       function pauseVideo3() {
         quiz = document.getElementById('quiz2');
+        player.pauseVideo();  
+        quiz.style.visibility = 'visible';
+      };
+
+      function pauseVideo5() {
+        quiz = document.getElementById('quiz3');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
       };
@@ -187,6 +213,28 @@
         c2 = false;
         numq = 2;
         seek(238);
+      };
+
+      document.getElementById("a3").onclick = function(){
+        c3 = true;
+        w3 = false;
+        numq = 3;
+        player.playVideo();
+        quiz.style.visibility = 'hidden';
+      };
+
+      document.getElementById("b3").onclick = function(){
+        w3 = true;
+        c3 = false;
+        numq = 3;
+        seek(316);
+      };
+
+      document.getElementById("c3").onclick = function(){
+        w3 = true;
+        c3 = false;
+        numq = 3;
+        seek(316);
       };
 
       document.getElementById("move").onclick = function(){

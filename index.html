@@ -29,9 +29,9 @@
       </div> -->
       <div id="player"></div>
       <div id="quiz1">
-        <div id="a1" class="option" onclick="seek(133)">A. UVA</div>
-        <div id="b1" class="option" onclick="seek(142)">B. UVB</div>
-        <div id="c1" class="option" onclick="seek(142)">C. UVC</div>
+        <div id="a1" class="option">A. UVA</div>
+        <div id="b1" class="option">B. UVB</div>
+        <div id="c1" class="option">C. UVC</div>
       </div>
       <div id="slide2">
         <div class="option move" onclick="seek(162)">I am good to move on!</div>
@@ -41,6 +41,8 @@
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
+      var c1 = false, c2 = false, c3 = false, c4 = false, c5 = false;
+      var w1 = false, w2 = false, w3 = false, w4 = false, w5 = false;
 
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -60,12 +62,12 @@
             'onStateChange': onPlayerStateChange
           }
         });
-      }
+      };
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         event.target.playVideo();
-      }
+      };
 
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
@@ -90,30 +92,50 @@
           time2 = player.getCurrentTime();
           if (time2 + .4 < stopPlayAt2) {
             rate2 = player.getPlaybackRate();
-            remainingTime2 = (stopPlayAt2 - time) / rate2;
-            stopPlayTimer = setTimeout(pauseVideo2, remainingTime2 * 1000);
+            remainingTime2 = (stopPlayAt2 - time2) / rate2;
+            if (c1) {
+              stopPlayTimer = setTimeout(pauseVideo2, remainingTime2 * 1000);
+            }
           }
         }
-      }
+      };
 
       function pauseVideo1() {
         quiz = document.getElementById('quiz1');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
-      }
+      };
 
       function pauseVideo2() {
         quiz = document.getElementById('slide2');
         player.pauseVideo();  
         quiz.style.visibility = 'visible';
-      }
+      };
 
       function seek(num)
       {
         player.seekTo(num);
         quiz.style.visibility = 'hidden';
         player.playVideo();
-      }
+      };
+
+      document.getElementById("a1").onclick = function(){
+        c1 = true;
+        w1 = false;
+        seek(133);
+      };
+
+      document.getElementById("b1").onclick = function(){
+        w1 = true;
+        c1 = false;
+        seek(143);
+      };
+
+      document.getElementById("b1").onclick = function(){
+        w1 = true;
+        c1 = false;
+        seek(143);
+      };
 
     </script>
 
